@@ -8,6 +8,7 @@ import threading
 #volume of the playback
 volume = 50
 
+#implementing multithreading to reduce lagging of the video playback
 def execute_skip_to_next():
     skipToNext()
 
