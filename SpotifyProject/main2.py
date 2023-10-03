@@ -1,42 +1,31 @@
 import cv2 
-
 import time 
-
 import mediapipe as mp
-
 import numpy as np
-
 from spoti import *
-
 import threading
 
+#volume of the playback
 volume = 50
 
 def execute_skip_to_next():
-
     skipToNext()
 
 def execute_skip_to_previous():
-
     skipToPrevious()
 
 def execute_volume_change():
-
     changeVolume(volume)
 
 def execute_delay():
-
     time.sleep(100)
 
 cap = cv2.VideoCapture(0)
-
 mpHands = mp.solutions.hands
-
 hands = mpHands.Hands()
-
 myDraw = mp.solutions.drawing_utils
 
-
+#for calling a function only once in a while loop
 function_called = False
 
 while True:
@@ -65,7 +54,7 @@ while True:
                     x_coordinate, y_coordinate = int(lm.x * width), int(lm.y * height)
                     #print(x_coordinate, y_coordinate)
 
-
+                    #conditions for coordinates to navigate left or right
                     if width > x_coordinate > 450.0  and not function_called:
                         thread = threading.Thread(target=execute_skip_to_previous)
                         thread.start()
@@ -86,7 +75,7 @@ while True:
                         thread = threading.Thread(target=execute_delay)
                         thread.start()
                         
-
+                    
                     if 0.0 < y_coordinate < 150.0 and volume < 100:
                         thread = threading.Thread(target=execute_volume_change)
                         thread.start()
