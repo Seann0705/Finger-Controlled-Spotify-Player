@@ -2,7 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
 
-#important info of spotify account
+#Info and IDs of Spotify account 
 DEVICE_ID = 'x'
 CLIENT_ID = 'y'
 CLIENT_SECRET = 'z'
